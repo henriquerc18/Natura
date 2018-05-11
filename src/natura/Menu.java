@@ -27,12 +27,12 @@ public class Menu{
 	}
 
 	public int getOption() {
-		System.out.println("Digite a opÃ§Ã£o desejada para "+nomeMenu+":");
+		System.out.println("Digite a opção desejada para "+nomeMenu+":");
 		try {
 			opSelecionada = scan.nextInt();
 			scan.nextLine();
 		} catch (InputMismatchException e) {
-			System.out.println("Erro de valor! Somente nÃºmeros!");
+			System.out.println("Erro de valor! Somente números!");
 			scan.nextLine();
 		}		
 		return opSelecionada;

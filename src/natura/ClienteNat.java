@@ -2,6 +2,8 @@ package natura;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ClienteNat{
 	
@@ -9,6 +11,7 @@ public class ClienteNat{
 	private String enderecoCliente = "";
 	private String emailCliente = "";
 	private long telefoneCliente = 0;
+	private ArrayList<PedidosNat> listaPedidos = new ArrayList<PedidosNat>();
 	
 	private int indice = 0;
 	
@@ -33,6 +36,10 @@ public class ClienteNat{
 	public int getIndice(){
 		return indice;
 	}
+	
+	public List<PedidosNat> getListaPedidos() {
+		return listaPedidos;
+	}
 		
 	public void setNomeCliente(String nomeCliente){
 		this.nomeCliente = nomeCliente;
@@ -54,6 +61,10 @@ public class ClienteNat{
 		this.indice = indice;
 	}
 	
+	public void setListaPedidos(ArrayList<PedidosNat> listaPedidos) {
+		this.listaPedidos = listaPedidos;
+	}
+	
 	public ClienteNat(String nomeCliente, String enderecoCliente, String emailCliente, long telefoneCliente){
 		this.nomeCliente = nomeCliente;
 		this.enderecoCliente = enderecoCliente;
@@ -65,7 +76,7 @@ public class ClienteNat{
 		System.out.println("Nome: ");
 		this.nomeCliente = scan.nextLine();
 		
-		System.out.println("EndereÃ§o: ");
+		System.out.println("Endereço: ");
 		this.enderecoCliente = scan.nextLine();
 		
 		System.out.println("Email: ");
@@ -76,7 +87,7 @@ public class ClienteNat{
 			this.telefoneCliente = scan.nextLong();
 			scan.nextLine();
 		}catch(InputMismatchException e){
-			System.out.println("Erro! Digite somente nÃºmeros!");
+			System.out.println("Erro! Digite somente números!");
 			scan.nextLine();
 		}
 	}
@@ -90,7 +101,7 @@ public class ClienteNat{
 		System.out.println("Novo Nome: ");
 		this.nomeCliente = scan.nextLine();
 		
-		System.out.println("Novo EndereÃ§o: ");
+		System.out.println("Novo Endereço: ");
 		this.enderecoCliente = scan.nextLine();
 		
 		System.out.println("Novo Email: ");
@@ -101,7 +112,7 @@ public class ClienteNat{
 			this.telefoneCliente = scan.nextLong();
 			scan.nextLine();
 		}catch(InputMismatchException e){
-			System.out.println("Erro! Digite somente nÃºmeros!");
+			System.out.println("Erro! Digite somente números!");
 			scan.nextLine();
 		}
 	}
@@ -114,7 +125,7 @@ public class ClienteNat{
 	public void mostraCliente(){
 		System.out.println("Cliente:");
 		System.out.println("Nome: " + this.nomeCliente);
-		System.out.println("EndereÃ§o: " + this.enderecoCliente);
+		System.out.println("Endereço: " + this.enderecoCliente);
 		System.out.println("Email: " + this.emailCliente);
 		System.out.println("Telefone: " + this.telefoneCliente);
 	}

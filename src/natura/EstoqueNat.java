@@ -63,23 +63,23 @@ public class EstoqueNat{
 	
 	public EstoqueNat(){
 		try{
-			System.out.println("CÃ³digo do Produto: ");
+			System.out.println("Código do Produto: ");
 			this.codigoProd = scan.nextInt();
 			scan.nextLine();
 		}catch(InputMismatchException e){
-			System.out.println("Erro! Digite somente nÃºmeros!");
+			System.out.println("Erro! Digite somente números!");
 			scan.nextLine();
 		}
 		
-		System.out.println("DescriÃ§Ã£o do Produto: ");
+		System.out.println("Descrição do Produto: ");
 		this.descricaoProd = scan.nextLine();
 		
 		try{
-			System.out.println("PreÃ§o do Produto: ");
+			System.out.println("Preço do Produto: ");
 			this.precoProd = scan.nextDouble();
 			scan.nextLine();
 		}catch(InputMismatchException e){
-			System.out.println("Erro! Digite somente nÃºmeros!");
+			System.out.println("Erro! Digite somente números!");
 			scan.nextLine();
 		}
 		
@@ -88,30 +88,30 @@ public class EstoqueNat{
 			this.qtdEstoque = scan.nextInt();
 			scan.nextLine();
 		}catch(InputMismatchException e){
-			System.out.println("Erro! Digite somente nÃºmeros!");
+			System.out.println("Erro! Digite somente números!");
 			scan.nextLine();
 		}
 	}
 	
 	public void updateEstoque(){
 		try{
-			System.out.println("Novo CÃ³digo do Produto: ");
+			System.out.println("Novo Código do Produto: ");
 			this.codigoProd = scan.nextInt();
 			scan.nextLine();
 		}catch(InputMismatchException e){
-			System.out.println("Erro! Digite somente nÃºmeros!");
+			System.out.println("Erro! Digite somente números!");
 			scan.nextLine();
 		}
 		
-		System.out.println("Nova DescriÃ§Ã£o do Produto: ");
+		System.out.println("Nova Descrição do Produto: ");
 		this.descricaoProd = scan.nextLine();
 		
 		try{
-			System.out.println("PreÃ§o do Produto: ");
+			System.out.println("Preço do Produto: ");
 			this.precoProd = scan.nextDouble();
 			scan.nextLine();
 		}catch(InputMismatchException e){
-			System.out.println("Erro! Digite somente nÃºmeros!");
+			System.out.println("Erro! Digite somente números!");
 			scan.nextLine();
 		}
 		
@@ -120,7 +120,7 @@ public class EstoqueNat{
 			this.qtdEstoque = scan.nextInt();
 			scan.nextLine();
 		}catch(InputMismatchException e){
-			System.out.println("Erro! Digite somente nÃºmeros!");
+			System.out.println("Erro! Digite somente números!");
 			scan.nextLine();
 		}
 	}
@@ -136,10 +136,10 @@ public class EstoqueNat{
 	}
 	
 	public void mostraEstoque(){
-		System.out.println("PreÃ§o:");
-		System.out.println("CÃ³digo: " + this.qtdEstoque);
-		System.out.println("DescriÃ§Ã£o: " + this.qtdEstoque);
-		System.out.println("PreÃ§o: " + this.qtdEstoque);
+		System.out.println("Preço:");
+		System.out.println("Código: " + this.qtdEstoque);
+		System.out.println("Descrição: " + this.qtdEstoque);
+		System.out.println("Preço: " + this.qtdEstoque);
 		System.out.println("Quantidade em Estoque: " + this.qtdEstoque);
 	}	
 }

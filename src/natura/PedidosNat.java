@@ -8,6 +8,7 @@ public class PedidosNat{
 	private long codigoPedido = 0;
 	private Double precoTotal = 0.00;
 	private String data = "";
+	private ClienteNat clientePedido = null;
 	
 	private int indice = 0;
 	
@@ -29,6 +30,10 @@ public class PedidosNat{
 		return indice;
 	}
 	
+	public ClienteNat getClientePedido() {
+		return clientePedido;
+	}
+	
 	public void setCodigoPedido(long codigoPedido){
 		this.codigoPedido = codigoPedido;
 	}
@@ -45,28 +50,33 @@ public class PedidosNat{
 		this.indice = indice;
 	}
 	
-	public PedidosNat(long codigoPedido, Double precoTotal, String data){
+	public void setClientePedido(ClienteNat clientePedido) {
+		this.clientePedido = clientePedido;
+	}
+	
+	public PedidosNat(long codigoPedido, Double precoTotal, String data, ClienteNat cli){
 		this.codigoPedido = codigoPedido;
 		this.precoTotal = precoTotal;
 		this.data = data;
+		this.clientePedido = cli;
 	}
 	
-	public PedidosNat(){
+	public PedidosNat(ClienteNat cli){
 		try{
-			System.out.println("CÃ³digo do Pedido: ");
+			System.out.println("Código do Pedido: ");
 			this.codigoPedido = scan.nextLong();
 			scan.nextLine();
 		}catch(InputMismatchException e){
-			System.out.println("Erro! Digite somente nÃºmeros!");
+			System.out.println("Erro! Digite somente números!");
 			scan.nextLine();			
 		}
 		
 		try{
-			System.out.println("PreÃ§o Total do Pedido: ");
+			System.out.println("Preço Total do Pedido: ");
 			this.precoTotal = scan.nextDouble();
 			scan.nextLine();
 		}catch(InputMismatchException e){
-			System.out.println("Erro! Digite somente nÃºmeros!");
+			System.out.println("Erro! Digite somente números!");
 			scan.nextLine();
 		}
 		
@@ -81,20 +91,20 @@ public class PedidosNat{
 	
 	public void updatePedidos(){
 		try{
-			System.out.println("Novo CÃ³digo do Pedido: ");
+			System.out.println("Novo Código do Pedido: ");
 			this.codigoPedido = scan.nextLong();
 			scan.nextLine();
 		}catch(InputMismatchException e){
-			System.out.println("Erro! Digite somente nÃºmeros!");
+			System.out.println("Erro! Digite somente números!");
 			scan.nextLine();			
 		}
 		
 		try{
-			System.out.println("Novo PreÃ§o Total do Pedido: ");
+			System.out.println("Novo Preço Total do Pedido: ");
 			this.precoTotal = scan.nextDouble();
 			scan.nextLine();
 		}catch(InputMismatchException e){
-			System.out.println("Erro! Digite somente nÃºmeros!");
+			System.out.println("Erro! Digite somente números!");
 			scan.nextLine();
 		}
 		
@@ -109,8 +119,9 @@ public class PedidosNat{
 	
 	public void mostraPedido(){
 		System.out.println("Pedido:");
-		System.out.println("CÃ³digo: " + this.codigoPedido);
-		System.out.println("PreÃ§o Total: " + this.precoTotal);
+		System.out.println("Realizado por: " + this.clientePedido.getNomeCliente());
+		System.out.println("Código: " + this.codigoPedido);
+		System.out.println("Preço Total: " + this.precoTotal);
 		System.out.println("Data: " + this.data);
 	}
 }

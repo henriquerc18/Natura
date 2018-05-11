@@ -24,7 +24,7 @@ public class Natura{
 	
 	public static void main(String args[]){
 		
-		System.out.println("Bem-vindo Ã  Natura!");
+		System.out.println("Bem-vindo à  Natura!");
 		
 		Menu menu = new Menu("Menu Principal", opsMenuPrincipal);
 		menu.show();
@@ -54,7 +54,7 @@ public class Natura{
 							cli.update();
 						}else{
 							System.out.println("---------------------------------");
-    						System.out.println("ERRO: Cliente nÃ£o encontrado!");
+    						System.out.println("ERRO: Cliente não encontrado!");
     						System.out.println("---------------------------------");
 						}
 						break;
@@ -64,7 +64,7 @@ public class Natura{
 					case 99:
 						break;
 					default:
-						System.out.println("OpÃ§Ã£o invÃ¡lida!");
+						System.out.println("Opção inválida!");
 						break;
 					}
 					menuClientes.show();
@@ -79,7 +79,7 @@ public class Natura{
 				do{
 					switch(opPedidos){
 					case 0:
-						registroPedidos();
+						registroPedidos(consultaClientes());
 						break;
 					case 1:
 						PedidosNat ped = consultaPedidos();
@@ -93,7 +93,7 @@ public class Natura{
 							ped.update();
 						}else{
 							System.out.println("---------------------------------");
-    						System.out.println("ERRO: Pedido nÃ£o encontrado!");
+    						System.out.println("ERRO: Pedido não encontrado!");
     						System.out.println("---------------------------------");
 						}
 						break;
@@ -101,7 +101,7 @@ public class Natura{
 						listaPedidos();
 						break;
 					default:
-						System.out.println("OpÃ§Ã£o invÃ¡lida!");
+						System.out.println("Opção inválida!");
 						break;
 					}
 					menuPedidos.show();
@@ -130,7 +130,7 @@ public class Natura{
 							prod.update();
 						}else{
 							System.out.println("---------------------------------");
-    						System.out.println("ERRO: Produto nÃ£o encontrado!");
+    						System.out.println("ERRO: Produto não encontrado!");
     						System.out.println("---------------------------------");
 						}
 						break;
@@ -138,7 +138,7 @@ public class Natura{
 						listaProdutos();
 						break;
 					default:
-						System.out.println("OpÃ§Ã£o invÃ¡lida!");
+						System.out.println("Opção inválida!");
 						break;
 					}
 					menuProdutos.show();
@@ -167,7 +167,7 @@ public class Natura{
 							est.update();
 						}else{
 							System.out.println("---------------------------------");
-    						System.out.println("ERRO: Produto nÃ£o encontrado no estoque!");
+    						System.out.println("ERRO: Produto não encontrado no estoque!");
     						System.out.println("---------------------------------");
 						}
 						break;
@@ -175,7 +175,7 @@ public class Natura{
 						listaEstoque();
 						break;
 					default:
-						System.out.println("OpÃ§Ã£o invÃ¡lida!");
+						System.out.println("Opção inválida!");
 						break;
 					}
 					menuEstoque.show();
@@ -196,7 +196,7 @@ public class Natura{
 						VendasNat vend = consultaVendas();
 						if(vend != null && vend.getNumNotaFisc() != 0){
 							System.out.println("--------------------------------");
-							System.out.println("Venda nÃ£o encontrada!");
+							System.out.println("Venda encontrada!");
 							System.out.println("--------------------------------");
 							vend.mostraVenda();
 							System.out.println("--------------------------------");
@@ -204,7 +204,7 @@ public class Natura{
 							vend.update();
 						}else{
 							System.out.println("---------------------------------");
-    						System.out.println("ERRO: Venda nÃ£o encontrada!");
+    						System.out.println("ERRO: Venda não encontrada!");
     						System.out.println("---------------------------------");
 						}
 						break;
@@ -212,7 +212,7 @@ public class Natura{
 						listaVendas();
 						break;
 					default:
-						System.out.println("OpÃ§Ã£o invÃ¡lida!");
+						System.out.println("Opção inválida!");
 						break;
 					}
 					menuVendas.show();
@@ -225,7 +225,7 @@ public class Natura{
 				break;
 
 			default:
-				System.out.println("OpÃ§Ã£o invÃ¡lida!");
+				System.out.println("Opção inválida!");
 				break;
 			}
 			menu.show();
@@ -249,8 +249,8 @@ public class Natura{
 			}
 		}
 		
-		public static void registroPedidos(){
-			PedidosNat pedidos = new PedidosNat();
+		public static void registroPedidos(ClienteNat cli){
+			PedidosNat pedidos = new PedidosNat(cli);
 			if(pedidos != null && pedidos.getCodigoPedido() != 0){
 				pedidos.save();
 				System.out.println("---------------------------------");
@@ -329,7 +329,7 @@ public class Natura{
 		
 		public static PedidosNat consultaPedidos(){
 			long pesquisa = 0;
-    		System.out.println("CÃ³digo do Pedido: ");
+    		System.out.println("Código do Pedido: ");
         	pesquisa = scan.nextLong();
         	scan.nextLine();
         	for (PedidosNat ped : listaPedidos) {
@@ -343,7 +343,7 @@ public class Natura{
 		
 		public static ProdutosNat consultaProdutos(){
 			long pesquisa = 0;
-    		System.out.println("CÃ³digo do Produto: ");
+    		System.out.println("Código do Produto: ");
         	pesquisa = scan.nextLong();
         	scan.nextLine();
         	for (ProdutosNat prod : listaProdutos) {
@@ -357,7 +357,7 @@ public class Natura{
 		
 		public static EstoqueNat consultaEstoque(){
 			long pesquisa = 0;
-    		System.out.println("CÃ³digo do Produto: ");
+    		System.out.println("Código do Produto: ");
         	pesquisa = scan.nextLong();
         	scan.nextLine();
         	for (EstoqueNat est : listaEstoque) {
@@ -371,7 +371,7 @@ public class Natura{
 		
 		public static VendasNat consultaVendas(){
 			long pesquisa = 0;
-    		System.out.println("NÂº da Nota Fiscal: ");
+    		System.out.println("Nº da Nota Fiscal: ");
         	pesquisa = scan.nextLong();
         	scan.nextLine();
         	for (VendasNat vend : listaVendas) {
@@ -389,7 +389,7 @@ public class Natura{
     		int pos = 0;
     		for (ClienteNat cliente : listaClientes){
     			pos += 1;
-    			System.out.println("NÃºmero: " + pos);
+    			System.out.println("Número: " + pos);
     			cliente.mostraCliente();
     			System.out.println("---------------------------------");    		
     		}
@@ -401,7 +401,7 @@ public class Natura{
     		int pos = 0;
     		for (PedidosNat pedidos : listaPedidos){
     			pos += 1;
-    			System.out.println("NÃºmero: " + pos);
+    			System.out.println("Número: " + pos);
     			pedidos.mostraPedido();
     			System.out.println("---------------------------------");    		
     		}
@@ -413,7 +413,7 @@ public class Natura{
     		int pos = 0;
     		for (ProdutosNat produtos : listaProdutos){
     			pos += 1;
-    			System.out.println("NÃºmero: " + pos);
+    			System.out.println("Número: " + pos);
     			produtos.mostraProduto();
     			System.out.println("---------------------------------");    		
     		}
@@ -425,7 +425,7 @@ public class Natura{
     		int pos = 0;
     		for (EstoqueNat estoque : listaEstoque){
     			pos += 1;
-    			System.out.println("NÃºmero: " + pos);
+    			System.out.println("Número: " + pos);
     			estoque.mostraEstoque();
     			System.out.println("---------------------------------");    		
     		}
@@ -437,7 +437,7 @@ public class Natura{
     		int pos = 0;
     		for (VendasNat vendas : listaVendas){
     			pos += 1;
-    			System.out.println("NÃºmero: " + pos);
+    			System.out.println("Número: " + pos);
     			vendas.mostraVenda();
     			System.out.println("---------------------------------");   		
     		}

@@ -63,32 +63,32 @@ public class ProdutosNat{
 	
 	public ProdutosNat(){
 		try{
-			System.out.println("PÃ¡gina do Produto: ");
+			System.out.println("Página do Produto: ");
 			this.paginaProd = scan.nextInt();
 			scan.nextLine();
 		}catch(InputMismatchException e){
-			System.out.println("Erro! Digite somente nÃºmeros!");
+			System.out.println("Erro! Digite somente números!");
 			scan.nextLine();
 		}
 		
 		try{
-			System.out.println("CÃ³digo do Produto: ");
+			System.out.println("Código do Produto: ");
 			this.codigoProd = scan.nextLong();
 			scan.nextLine();
 		}catch(InputMismatchException e){
-			System.out.println("Erro! Digite somente nÃºmeros!");
+			System.out.println("Erro! Digite somente números!");
 			scan.nextLine();			
 		}
 		
-		System.out.println("DescriÃ§Ã£o do Produto: ");
+		System.out.println("Descrição do Produto: ");
 		this.descricaoProd = scan.nextLine();
 		
 		try{
-			System.out.println("PreÃ§o do Produto: ");
+			System.out.println("Preço do Produto: ");
 			this.precoProd = scan.nextDouble();
 			scan.nextLine();
 		}catch(InputMismatchException e){
-			System.out.println("Erro! Digite somente nÃºmeros!");
+			System.out.println("Erro! Digite somente números!");
 			scan.nextLine();
 		}		
 	}
@@ -100,32 +100,32 @@ public class ProdutosNat{
 	
 	public void updateProdutos(){
 		try{
-			System.out.println("Nova PÃ¡gina do Produto: ");
+			System.out.println("Nova Página do Produto: ");
 			this.paginaProd = scan.nextInt();
 			scan.nextLine();
 		}catch(InputMismatchException e){
-			System.out.println("Erro! Digite somente nÃºmeros!");
+			System.out.println("Erro! Digite somente números!");
 			scan.nextLine();
 		}
 		
 		try{
-			System.out.println("Novo CÃ³digo do Produto: ");
+			System.out.println("Novo Código do Produto: ");
 			this.codigoProd = scan.nextLong();
 			scan.nextLine();
 		}catch(InputMismatchException e){
-			System.out.println("Erro! Digite somente nÃºmeros!");
+			System.out.println("Erro! Digite somente números!");
 			scan.nextLine();			
 		}
 		
-		System.out.println("Nova DescriÃ§Ã£o do Produto: ");
+		System.out.println("Nova Descrição do Produto: ");
 		this.descricaoProd = scan.nextLine();
 		
 		try{
-			System.out.println("Novo PreÃ§o do Produto: ");
+			System.out.println("Novo Preço do Produto: ");
 			this.precoProd = scan.nextDouble();
 			scan.nextLine();
 		}catch(InputMismatchException e){
-			System.out.println("Erro! Digite somente nÃºmeros!");
+			System.out.println("Erro! Digite somente números!");
 			scan.nextLine();
 		}		
 	}
@@ -137,9 +137,9 @@ public class ProdutosNat{
 	
 	public void mostraProduto(){
 		System.out.println("Produto:");
-		System.out.println("PÃ¡gina: " + this.paginaProd);
-		System.out.println("CÃ³digo: " + this.codigoProd);
-		System.out.println("DescriÃ§Ã£o: " + this.descricaoProd);
-		System.out.println("PreÃ§o: " + this.precoProd);
+		System.out.println("Página: " + this.paginaProd);
+		System.out.println("Código: " + this.codigoProd);
+		System.out.println("Descrição: " + this.descricaoProd);
+		System.out.println("Preço: " + this.precoProd);
 	}
 }

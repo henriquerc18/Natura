@@ -63,11 +63,11 @@ public class VendasNat{
 	
 	public VendasNat(){
 		try{
-			System.out.println("NÂº da Nota Fiscal: ");
+			System.out.println("Nº da Nota Fiscal: ");
 			this.numNotaFisc = scan.nextLong();
 			scan.nextLine();
 		}catch(InputMismatchException e){
-			System.out.println("Erro! Digite somente nÃºmeros!");
+			System.out.println("Erro! Digite somente números!");
 			scan.nextLine();
 		}
 		
@@ -76,16 +76,16 @@ public class VendasNat{
 			this.quantidade = scan.nextInt();
 			scan.nextLine();
 		}catch(InputMismatchException e){
-			System.out.println("Erro! Digite somente nÃºmeros!");
+			System.out.println("Erro! Digite somente números!");
 			scan.nextLine();
 		}
 		
 		try{
-			System.out.println("PreÃ§o Total: ");
+			System.out.println("Preço Total: ");
 			this.precoTotal = scan.nextDouble();
 			scan.nextLine();
 		}catch(InputMismatchException e){
-			System.out.println("Erro! Digite somente nÃºmeros!");
+			System.out.println("Erro! Digite somente números!");
 			scan.nextLine();
 		}
 		
@@ -95,11 +95,11 @@ public class VendasNat{
 	
 	public void updateVendas(){
 		try{
-			System.out.println("Novo NÂº da Nota Fiscal: ");
+			System.out.println("Novo Nº da Nota Fiscal: ");
 			this.numNotaFisc = scan.nextLong();
 			scan.nextLine();
 		}catch(InputMismatchException e){
-			System.out.println("Erro! Digite somente nÃºmeros!");
+			System.out.println("Erro! Digite somente números!");
 			scan.nextLine();
 		}
 		
@@ -108,16 +108,16 @@ public class VendasNat{
 			this.quantidade = scan.nextInt();
 			scan.nextLine();
 		}catch(InputMismatchException e){
-			System.out.println("Erro! Digite somente nÃºmeros!");
+			System.out.println("Erro! Digite somente números!");
 			scan.nextLine();
 		}
 		
 		try{
-			System.out.println("Novo PreÃ§o Total: ");
+			System.out.println("Novo Preço Total: ");
 			this.precoTotal = scan.nextDouble();
 			scan.nextLine();
 		}catch(InputMismatchException e){
-			System.out.println("Erro! Digite somente nÃºmeros!");
+			System.out.println("Erro! Digite somente números!");
 			scan.nextLine();
 		}
 		
@@ -137,9 +137,9 @@ public class VendasNat{
 	
 	public void mostraVenda(){
 		System.out.println("Venda:");
-		System.out.println("NÂº da Nota Fiscal: " + this.numNotaFisc);
+		System.out.println("Nº da Nota Fiscal: " + this.numNotaFisc);
 		System.out.println("Quantidade: " + this.quantidade);
-		System.out.println("PreÃ§o Total: " + this.precoTotal);
+		System.out.println("Preço Total: " + this.precoTotal);
 		System.out.println("Data da Venda: " + this.dataVenda);
 	}
 }
