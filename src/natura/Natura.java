@@ -79,7 +79,7 @@ public class Natura{
 				do{
 					switch(opPedidos){
 					case 0:
-						registroPedidos(consultaClientes());
+						registroPedidos(consultaClientes(), consultaProdutos());
 						break;
 					case 1:
 						PedidosNat ped = consultaPedidos();
@@ -249,9 +249,9 @@ public class Natura{
 			}
 		}
 		
-		public static void registroPedidos(ClienteNat cli){
-			PedidosNat pedidos = new PedidosNat(cli);
-			if(pedidos != null && pedidos.getCodigoPedido() != 0){
+		public static void registroPedidos(ClienteNat cli, ProdutosNat prod){
+			PedidosNat pedidos = new PedidosNat(cli, prod);
+			if(cli != null && pedidos.getCodigoPedido() != 0 && prod != null){
 				pedidos.save();
 				System.out.println("---------------------------------");
 				System.out.println("Pedido registrado com sucesso!");

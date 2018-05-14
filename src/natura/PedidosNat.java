@@ -9,6 +9,7 @@ public class PedidosNat{
 	private Double precoTotal = 0.00;
 	private String data = "";
 	private ClienteNat clientePedido = null;
+	private ProdutosNat produtoPedido = null;
 	
 	private int indice = 0;
 	
@@ -34,6 +35,10 @@ public class PedidosNat{
 		return clientePedido;
 	}
 	
+	public ProdutosNat getProdutoPedido(){
+		return produtoPedido;
+	}
+	
 	public void setCodigoPedido(long codigoPedido){
 		this.codigoPedido = codigoPedido;
 	}
@@ -54,18 +59,25 @@ public class PedidosNat{
 		this.clientePedido = clientePedido;
 	}
 	
-	public PedidosNat(long codigoPedido, Double precoTotal, String data, ClienteNat cli){
+	public void setProdutoPedido(ProdutosNat produtoPedido){
+		this.produtoPedido = produtoPedido;
+	}
+	
+	public PedidosNat(long codigoPedido, Double precoTotal, String data, ClienteNat cli, ProdutosNat prod){
 		this.codigoPedido = codigoPedido;
 		this.precoTotal = precoTotal;
 		this.data = data;
 		this.clientePedido = cli;
+		this.produtoPedido = prod;
 	}
 	
-	public PedidosNat(ClienteNat cli){
+	public PedidosNat(ClienteNat cli, ProdutosNat prod){
 		try{
 			System.out.println("Código do Pedido: ");
 			this.codigoPedido = scan.nextLong();
 			scan.nextLine();
+			clientePedido = cli;
+			produtoPedido = prod;
 		}catch(InputMismatchException e){
 			System.out.println("Erro! Digite somente números!");
 			scan.nextLine();			
@@ -119,7 +131,7 @@ public class PedidosNat{
 	
 	public void mostraPedido(){
 		System.out.println("Pedido:");
-		System.out.println("Realizado por: " + this.clientePedido.getNomeCliente());
+		System.out.println("Realizado por: " + clientePedido.getNomeCliente());
 		System.out.println("Código: " + this.codigoPedido);
 		System.out.println("Preço Total: " + this.precoTotal);
 		System.out.println("Data: " + this.data);

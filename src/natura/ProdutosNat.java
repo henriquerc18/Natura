@@ -1,6 +1,8 @@
 package natura;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 public class ProdutosNat{
@@ -9,6 +11,7 @@ public class ProdutosNat{
 	private long codigoProd = 0;
 	private String descricaoProd = "";
 	private Double precoProd = 0.00;
+	private ArrayList<PedidosNat> listaPedidos = new ArrayList<PedidosNat>();
 	
 	private int indice = 0;
 	
@@ -34,6 +37,10 @@ public class ProdutosNat{
 		return indice;
 	}
 	
+	public List<PedidosNat> getListaPedidos() {
+		return listaPedidos;
+	}
+	
 	public void setPaginaProd(int paginaProd){
 		this.paginaProd = paginaProd;
 	}
@@ -52,6 +59,10 @@ public class ProdutosNat{
 	
 	public void setIndice(int indice){
 		this.indice = indice;
+	}
+	
+	public void setListaPedidos(ArrayList<PedidosNat> listaPedidos) {
+		this.listaPedidos = listaPedidos;
 	}
 	
 	public ProdutosNat(int paginaProd, long codigoProd, String descricaoProd, Double precoProd){
@@ -136,7 +147,6 @@ public class ProdutosNat{
 	}
 	
 	public void mostraProduto(){
-		System.out.println("Produto:");
 		System.out.println("Página: " + this.paginaProd);
 		System.out.println("Código: " + this.codigoProd);
 		System.out.println("Descrição: " + this.descricaoProd);
