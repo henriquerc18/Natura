@@ -5,13 +5,13 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ClienteNat{
+public class Cliente{
 	
 	private String nomeCliente = "";
 	private String enderecoCliente = "";
 	private String emailCliente = "";
 	private long telefoneCliente = 0;
-	private ArrayList<PedidosNat> listaPedidos = new ArrayList<PedidosNat>();
+	private ArrayList<Pedidos> listaPedidos = new ArrayList<Pedidos>();
 	
 	private int indice = 0;
 	
@@ -37,7 +37,7 @@ public class ClienteNat{
 		return indice;
 	}
 	
-	public List<PedidosNat> getListaPedidos() {
+	public List<Pedidos> getListaPedidos() {
 		return listaPedidos;
 	}
 		
@@ -61,18 +61,18 @@ public class ClienteNat{
 		this.indice = indice;
 	}
 	
-	public void setListaPedidos(ArrayList<PedidosNat> listaPedidos) {
+	public void setListaPedidos(ArrayList<Pedidos> listaPedidos) {
 		this.listaPedidos = listaPedidos;
 	}
 	
-	public ClienteNat(String nomeCliente, String enderecoCliente, String emailCliente, long telefoneCliente){
+	public Cliente(String nomeCliente, String enderecoCliente, String emailCliente, long telefoneCliente){
 		this.nomeCliente = nomeCliente;
 		this.enderecoCliente = enderecoCliente;
 		this.emailCliente = emailCliente;
 		this.telefoneCliente = telefoneCliente;
 	}
 		
-	public ClienteNat(){
+	public Cliente(){
 		System.out.println("Nome: ");
 		this.nomeCliente = scan.nextLine();
 		

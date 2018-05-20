@@ -5,13 +5,13 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
-public class ProdutosNat{
+public class Produtos{
 	
 	private int paginaProd = 0;
 	private long codigoProd = 0;
 	private String descricaoProd = "";
 	private Double precoProd = 0.00;
-	private ArrayList<PedidosNat> listaPedidos = new ArrayList<PedidosNat>();
+	private ArrayList<Pedidos> listaPedidos = new ArrayList<Pedidos>();
 	
 	private int indice = 0;
 	
@@ -37,7 +37,7 @@ public class ProdutosNat{
 		return indice;
 	}
 	
-	public List<PedidosNat> getListaPedidos() {
+	public List<Pedidos> getListaPedidos() {
 		return listaPedidos;
 	}
 	
@@ -61,18 +61,18 @@ public class ProdutosNat{
 		this.indice = indice;
 	}
 	
-	public void setListaPedidos(ArrayList<PedidosNat> listaPedidos) {
+	public void setListaPedidos(ArrayList<Pedidos> listaPedidos) {
 		this.listaPedidos = listaPedidos;
 	}
 	
-	public ProdutosNat(int paginaProd, long codigoProd, String descricaoProd, Double precoProd){
+	public Produtos(int paginaProd, long codigoProd, String descricaoProd, Double precoProd){
 		this.paginaProd = paginaProd;
 		this.codigoProd = codigoProd;
 		this.descricaoProd = descricaoProd;
 		this.precoProd = precoProd;
 	}
 	
-	public ProdutosNat(){
+	public Produtos(){
 		try{
 			System.out.println("Página do Produto: ");
 			this.paginaProd = scan.nextInt();

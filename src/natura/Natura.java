@@ -7,11 +7,11 @@ import java.util.Scanner;
 
 public class Natura{
 	
-	public static ArrayList<ClienteNat> listaClientes = new ArrayList<ClienteNat>();
-	public static ArrayList<PedidosNat> listaPedidos = new ArrayList<PedidosNat>();
-	public static ArrayList<ProdutosNat> listaProdutos = new ArrayList<ProdutosNat>();
-	public static ArrayList<EstoqueNat> listaEstoque = new ArrayList<EstoqueNat>();
-	public static ArrayList<VendasNat> listaVendas = new ArrayList<VendasNat>();
+	public static ArrayList<Cliente> listaClientes = new ArrayList<Cliente>();
+	public static ArrayList<Pedidos> listaPedidos = new ArrayList<Pedidos>();
+	public static ArrayList<Produtos> listaProdutos = new ArrayList<Produtos>();
+	public static ArrayList<Estoque> listaEstoque = new ArrayList<Estoque>();
+	public static ArrayList<Vendas> listaVendas = new ArrayList<Vendas>();
 	
 	public static List<String> opsMenuPrincipal = Arrays.asList("Clientes", "Pedidos", "Produtos", "Estoque", "Vendas");
 	public static List<String> opsMenuClientes = Arrays.asList("Cadastrar Clientes", "Consultar Clientes", "Listar Clientes");
@@ -43,7 +43,7 @@ public class Natura{
 						cadastroClientes();
 						break;
 					case 1:
-						ClienteNat cli = consultaClientes();
+						Cliente cli = consultaClientes();
 						if(cli != null && cli.getTelefoneCliente() != 0){
 							System.out.println("--------------------------------");
 							System.out.println("Cliente encontrado!");
@@ -82,7 +82,7 @@ public class Natura{
 						registroPedidos(consultaClientes(), consultaProdutos());
 						break;
 					case 1:
-						PedidosNat ped = consultaPedidos();
+						Pedidos ped = consultaPedidos();
 						if(ped != null && ped.getCodigoPedido() != 0){
 							System.out.println("--------------------------------");
 							System.out.println("Pedido encontrado!");
@@ -119,7 +119,7 @@ public class Natura{
 						cadastroProdutos();
 						break;
 					case 1:
-						ProdutosNat prod = consultaProdutos();
+						Produtos prod = consultaProdutos();
 						if(prod != null && prod.getCodigoProd() != 0){
 							System.out.println("--------------------------------");
 							System.out.println("Produto encontrado!");
@@ -156,7 +156,7 @@ public class Natura{
 						registroEstoque();
 						break;
 					case 1:
-						EstoqueNat est = consultaEstoque();
+						Estoque est = consultaEstoque();
 						if(est != null && est.getCodigoProd() != 0){
 							System.out.println("--------------------------------");
 							System.out.println("Produto encontrado no estoque!");
@@ -193,7 +193,7 @@ public class Natura{
 						registroVendas();
 						break;
 					case 1:
-						VendasNat vend = consultaVendas();
+						Vendas vend = consultaVendas();
 						if(vend != null && vend.getNumNotaFisc() != 0){
 							System.out.println("--------------------------------");
 							System.out.println("Venda encontrada!");
@@ -234,7 +234,7 @@ public class Natura{
 	}
 	
 		public static void cadastroClientes(){
-			ClienteNat cliente = new ClienteNat();
+			Cliente cliente = new Cliente();
 			if(cliente != null && cliente.getTelefoneCliente() != 0){
 				cliente.save();
 				System.out.println("---------------------------------");
@@ -249,8 +249,8 @@ public class Natura{
 			}
 		}
 		
-		public static void registroPedidos(ClienteNat cli, ProdutosNat prod){
-			PedidosNat pedidos = new PedidosNat(cli, prod);
+		public static void registroPedidos(Cliente cli, Produtos prod){
+			Pedidos pedidos = new Pedidos(cli, prod);
 			if(cli != null && pedidos.getCodigoPedido() != 0 && prod != null){
 				pedidos.save();
 				System.out.println("---------------------------------");
@@ -266,7 +266,7 @@ public class Natura{
 		}
 		
 		public static void cadastroProdutos(){
-			ProdutosNat produtos = new ProdutosNat();
+			Produtos produtos = new Produtos();
 			if(produtos != null && produtos.getCodigoProd() != 0){
 				produtos.save();
 				System.out.println("---------------------------------");
@@ -282,7 +282,7 @@ public class Natura{
 		}
 		
 		public static void registroEstoque(){
-			EstoqueNat estoque = new EstoqueNat();
+			Estoque estoque = new Estoque();
 			if(estoque != null && estoque.getCodigoProd() != 0){
 				estoque.save();
 				System.out.println("---------------------------------");
@@ -298,7 +298,7 @@ public class Natura{
 		}
 		
 		public static void registroVendas(){
-			VendasNat vendas = new VendasNat();
+			Vendas vendas = new Vendas();
 			if(vendas != null && vendas.getNumNotaFisc() != 0){
 				vendas.save();
 				System.out.println("---------------------------------");
@@ -313,12 +313,12 @@ public class Natura{
 			}
 		}
 		
-		public static ClienteNat consultaClientes(){
+		public static Cliente consultaClientes(){
 			long pesquisa = 0;
     		System.out.println("Telefone do Cliente: ");
         	pesquisa = scan.nextLong();
         	scan.nextLine();
-        	for (ClienteNat cli : listaClientes) {
+        	for (Cliente cli : listaClientes) {
         		if (cli.getTelefoneCliente() == pesquisa){               
         			cli.setIndice(listaClientes.indexOf(cli));  
         			return cli;
@@ -327,12 +327,12 @@ public class Natura{
         	return null;
 		}
 		
-		public static PedidosNat consultaPedidos(){
+		public static Pedidos consultaPedidos(){
 			long pesquisa = 0;
     		System.out.println("Código do Pedido: ");
         	pesquisa = scan.nextLong();
         	scan.nextLine();
-        	for (PedidosNat ped : listaPedidos) {
+        	for (Pedidos ped : listaPedidos) {
         		if (ped.getCodigoPedido() == pesquisa){               
         			ped.setIndice(listaPedidos.indexOf(ped));  
         			return ped;
@@ -341,12 +341,12 @@ public class Natura{
         	return null;
 		}
 		
-		public static ProdutosNat consultaProdutos(){
+		public static Produtos consultaProdutos(){
 			long pesquisa = 0;
     		System.out.println("Código do Produto: ");
         	pesquisa = scan.nextLong();
         	scan.nextLine();
-        	for (ProdutosNat prod : listaProdutos) {
+        	for (Produtos prod : listaProdutos) {
         		if (prod.getCodigoProd() == pesquisa){               
         			prod.setIndice(listaProdutos.indexOf(prod));  
         			return prod;
@@ -355,12 +355,12 @@ public class Natura{
         	return null;
 		}
 		
-		public static EstoqueNat consultaEstoque(){
+		public static Estoque consultaEstoque(){
 			long pesquisa = 0;
     		System.out.println("Código do Produto: ");
         	pesquisa = scan.nextLong();
         	scan.nextLine();
-        	for (EstoqueNat est : listaEstoque) {
+        	for (Estoque est : listaEstoque) {
         		if (est.getCodigoProd() == pesquisa){               
         			est.setIndice(listaEstoque.indexOf(est));  
         			return est;
@@ -369,12 +369,12 @@ public class Natura{
         	return null;
 		}
 		
-		public static VendasNat consultaVendas(){
+		public static Vendas consultaVendas(){
 			long pesquisa = 0;
     		System.out.println("Nº da Nota Fiscal: ");
         	pesquisa = scan.nextLong();
         	scan.nextLine();
-        	for (VendasNat vend : listaVendas) {
+        	for (Vendas vend : listaVendas) {
         		if (vend.getNumNotaFisc() == pesquisa){               
         			vend.setIndice(listaVendas.indexOf(vend));  
         			return vend;
@@ -387,7 +387,7 @@ public class Natura{
     		System.out.println("Dados dos Clientes:");
     		System.out.println("---------------------------------");
     		int pos = 0;
-    		for (ClienteNat cliente : listaClientes){
+    		for (Cliente cliente : listaClientes){
     			pos += 1;
     			System.out.println("Número: " + pos);
     			cliente.mostraCliente();
@@ -399,7 +399,7 @@ public class Natura{
     		System.out.println("Dados dos Pedidos:");
     		System.out.println("---------------------------------");
     		int pos = 0;
-    		for (PedidosNat pedidos : listaPedidos){
+    		for (Pedidos pedidos : listaPedidos){
     			pos += 1;
     			System.out.println("Número: " + pos);
     			pedidos.mostraPedido();
@@ -411,7 +411,7 @@ public class Natura{
     		System.out.println("Dados dos Produtos:");
     		System.out.println("---------------------------------");
     		int pos = 0;
-    		for (ProdutosNat produtos : listaProdutos){
+    		for (Produtos produtos : listaProdutos){
     			pos += 1;
     			System.out.println("Número: " + pos);
     			produtos.mostraProduto();
@@ -423,7 +423,7 @@ public class Natura{
     		System.out.println("Dados dos Produtos em Estoque:");
     		System.out.println("---------------------------------");
     		int pos = 0;
-    		for (EstoqueNat estoque : listaEstoque){
+    		for (Estoque estoque : listaEstoque){
     			pos += 1;
     			System.out.println("Número: " + pos);
     			estoque.mostraEstoque();
@@ -435,7 +435,7 @@ public class Natura{
     		System.out.println("Dados das Vendas:");
     		System.out.println("---------------------------------");
     		int pos = 0;
-    		for (VendasNat vendas : listaVendas){
+    		for (Vendas vendas : listaVendas){
     			pos += 1;
     			System.out.println("Número: " + pos);
     			vendas.mostraVenda();

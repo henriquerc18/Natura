@@ -3,13 +3,13 @@ package natura;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class PedidosNat{
+public class Pedidos{
 	
 	private long codigoPedido = 0;
 	private Double precoTotal = 0.00;
 	private String data = "";
-	private ClienteNat clientePedido = null;
-	private ProdutosNat produtoPedido = null;
+	private Cliente clientePedido = null;
+	private Produtos produtoPedido = null;
 	
 	private int indice = 0;
 	
@@ -31,11 +31,11 @@ public class PedidosNat{
 		return indice;
 	}
 	
-	public ClienteNat getClientePedido() {
+	public Cliente getClientePedido() {
 		return clientePedido;
 	}
 	
-	public ProdutosNat getProdutoPedido(){
+	public Produtos getProdutoPedido(){
 		return produtoPedido;
 	}
 	
@@ -55,15 +55,15 @@ public class PedidosNat{
 		this.indice = indice;
 	}
 	
-	public void setClientePedido(ClienteNat clientePedido) {
+	public void setClientePedido(Cliente clientePedido) {
 		this.clientePedido = clientePedido;
 	}
 	
-	public void setProdutoPedido(ProdutosNat produtoPedido){
+	public void setProdutoPedido(Produtos produtoPedido){
 		this.produtoPedido = produtoPedido;
 	}
 	
-	public PedidosNat(long codigoPedido, Double precoTotal, String data, ClienteNat cli, ProdutosNat prod){
+	public Pedidos(long codigoPedido, Double precoTotal, String data, Cliente cli, Produtos prod){
 		this.codigoPedido = codigoPedido;
 		this.precoTotal = precoTotal;
 		this.data = data;
@@ -71,7 +71,7 @@ public class PedidosNat{
 		this.produtoPedido = prod;
 	}
 	
-	public PedidosNat(ClienteNat cli, ProdutosNat prod){
+	public Pedidos(Cliente cli, Produtos prod){
 		try{
 			System.out.println("Código do Pedido: ");
 			this.codigoPedido = scan.nextLong();

@@ -3,7 +3,7 @@ package natura;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class VendasNat{
+public class Vendas{
 	
 	private long numNotaFisc = 0;
 	private int quantidade = 0;
@@ -54,14 +54,14 @@ public class VendasNat{
 		this.indice = indice;
 	}
 	
-	public VendasNat(long numNotaFisc, int quantidade, Double precoTotal, String dataVenda){
+	public Vendas(long numNotaFisc, int quantidade, Double precoTotal, String dataVenda){
 		this.numNotaFisc = numNotaFisc;
 		this.quantidade = quantidade;
 		this.precoTotal = precoTotal;
 		this.dataVenda = dataVenda;
 	}
 	
-	public VendasNat(){
+	public Vendas(){
 		try{
 			System.out.println("Nº da Nota Fiscal: ");
 			this.numNotaFisc = scan.nextLong();

@@ -3,7 +3,7 @@ package natura;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class EstoqueNat extends ProdutosNat{
+public class Estoque extends Produtos{
 	
 	private int qtdEstoque = 0;
 	
@@ -17,12 +17,12 @@ public class EstoqueNat extends ProdutosNat{
 		this.qtdEstoque = qtdEstoque;
 	}
 	
-	public EstoqueNat(int paginaProd, long codigoProd, String descricaoProd, Double precoProd, int qtdEstoque){
+	public Estoque(int paginaProd, long codigoProd, String descricaoProd, Double precoProd, int qtdEstoque){
 		super(paginaProd, codigoProd, descricaoProd, precoProd);
 		this.qtdEstoque = qtdEstoque;
 	}
 	
-	public EstoqueNat(){
+	public Estoque(){
 		super();
 		try{
 			System.out.println("Quantidade em Estoque: ");
