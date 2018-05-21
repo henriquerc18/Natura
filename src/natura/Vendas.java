@@ -5,17 +5,24 @@ import java.util.Scanner;
 
 public class Vendas{
 	
-	private long numNotaFisc = 0;
+	private long codVenda = 0;
 	private int quantidade = 0;
 	private Double precoTotal = 0.00;
 	private String dataVenda = "";
-	
 	private int indice = 0;
+	
+	//Cliente - Venda
+	private Clientes clienteVenda = null;
 	
 	private Scanner scan = Natura.scan;
 	
+	//Gets
 	public long getNumNotaFisc(){
-		return numNotaFisc;
+		return getCodVenda();
+	}
+
+	public long getCodVenda(){
+		return codVenda;
 	}
 	
 	public int getQuantidade(){
@@ -34,8 +41,14 @@ public class Vendas{
 		return indice;
 	}
 	
-	public void setNumNotaFisc(long numNotaFisc){
-		this.numNotaFisc = numNotaFisc;
+	//Get Cliente - Venda
+	public Clientes getClienteVenda() {
+		return clienteVenda;
+	}
+	
+	//Sets
+	public void setCodVenda(long codVenda){
+		this.codVenda = codVenda;
 	}
 	
 	public void setQuantidade(int quantidade){
@@ -54,18 +67,25 @@ public class Vendas{
 		this.indice = indice;
 	}
 	
-	public Vendas(long numNotaFisc, int quantidade, Double precoTotal, String dataVenda){
-		this.numNotaFisc = numNotaFisc;
+	//Set Cliente - Venda
+	public void setClienteVenda(Clientes clienteVenda) {
+		this.clienteVenda = clienteVenda;
+	}
+	
+	public Vendas(long codVenda, int quantidade, Double precoTotal, String dataVenda, Clientes cli){
+		this.codVenda = codVenda;
 		this.quantidade = quantidade;
 		this.precoTotal = precoTotal;
 		this.dataVenda = dataVenda;
+		this.clienteVenda = cli;
 	}
 	
-	public Vendas(){
+	public Vendas(Clientes cli){
 		try{
-			System.out.println("Nº da Nota Fiscal: ");
-			this.numNotaFisc = scan.nextLong();
+			System.out.println("Código da Venda: ");
+			this.codVenda = scan.nextLong();
 			scan.nextLine();
+			clienteVenda = cli;
 		}catch(InputMismatchException e){
 			System.out.println("Erro! Digite somente números!");
 			scan.nextLine();
@@ -95,8 +115,8 @@ public class Vendas{
 	
 	public void updateVendas(){
 		try{
-			System.out.println("Novo Nº da Nota Fiscal: ");
-			this.numNotaFisc = scan.nextLong();
+			System.out.println("Novo Código da Venda: ");
+			this.codVenda = scan.nextLong();
 			scan.nextLine();
 		}catch(InputMismatchException e){
 			System.out.println("Erro! Digite somente números!");
@@ -137,7 +157,8 @@ public class Vendas{
 	
 	public void mostraVenda(){
 		System.out.println("Venda:");
-		System.out.println("Nº da Nota Fiscal: " + this.numNotaFisc);
+		System.out.println("Cliente: " + clienteVenda.getNomeCliente());
+		System.out.println("Código: " + this.codVenda);
 		System.out.println("Quantidade: " + this.quantidade);
 		System.out.println("Preço Total: " + this.precoTotal);
 		System.out.println("Data da Venda: " + this.dataVenda);

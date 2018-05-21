@@ -1,20 +1,27 @@
 package natura;
 
+import java.util.ArrayList;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
 
 public class Pedidos{
 	
+	//Atributos
 	private long codigoPedido = 0;
 	private Double precoTotal = 0.00;
 	private String data = "";
-	private Cliente clientePedido = null;
-	private Produtos produtoPedido = null;
-	
 	private int indice = 0;
+	
+	//Cliente - Pedido
+	private Clientes clientePedido = null;
+	
+	//Pedido - Produto
+	private ArrayList<Produtos> listaProdutos = new ArrayList<Produtos>();
 	
 	private Scanner scan = Natura.scan;
 	
+	//Gets
 	public long getCodigoPedido(){
 		return codigoPedido;
 	}
@@ -31,19 +38,22 @@ public class Pedidos{
 		return indice;
 	}
 	
-	public Cliente getClientePedido() {
+	//Get Cliente - Pedido
+	public Clientes getClientePedido() {
 		return clientePedido;
 	}
 	
-	public Produtos getProdutoPedido(){
-		return produtoPedido;
+	//Get Pedido - Produto
+	public List<Produtos> getListaProdutos() {
+		return listaProdutos;
 	}
 	
+	//Sets
 	public void setCodigoPedido(long codigoPedido){
 		this.codigoPedido = codigoPedido;
 	}
 	
-	public void setprecoTotal(Double precoTotal){
+	public void setPrecoTotal(Double precoTotal){
 		this.precoTotal = precoTotal;
 	}
 
@@ -55,29 +65,29 @@ public class Pedidos{
 		this.indice = indice;
 	}
 	
-	public void setClientePedido(Cliente clientePedido) {
+	//Set Cliente - Pedido
+	public void setClientePedido(Clientes clientePedido) {
 		this.clientePedido = clientePedido;
 	}
 	
-	public void setProdutoPedido(Produtos produtoPedido){
-		this.produtoPedido = produtoPedido;
+	//Set Pedido - Produto
+	public void setListaProdutos(ArrayList<Produtos> listaProdutos) {
+		this.listaProdutos = listaProdutos;
 	}
 	
-	public Pedidos(long codigoPedido, Double precoTotal, String data, Cliente cli, Produtos prod){
+	public Pedidos(long codigoPedido, Double precoTotal, String data, Clientes cli){
 		this.codigoPedido = codigoPedido;
 		this.precoTotal = precoTotal;
 		this.data = data;
-		this.clientePedido = cli;
-		this.produtoPedido = prod;
+		this.clientePedido = cli; //Set Cliente - Pedido
 	}
 	
-	public Pedidos(Cliente cli, Produtos prod){
+	public Pedidos(Clientes cli, Produtos prod){
 		try{
 			System.out.println("Código do Pedido: ");
 			this.codigoPedido = scan.nextLong();
 			scan.nextLine();
 			clientePedido = cli;
-			produtoPedido = prod;
 		}catch(InputMismatchException e){
 			System.out.println("Erro! Digite somente números!");
 			scan.nextLine();			

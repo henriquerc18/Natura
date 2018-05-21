@@ -11,12 +11,17 @@ public class Produtos{
 	private long codigoProd = 0;
 	private String descricaoProd = "";
 	private Double precoProd = 0.00;
-	private ArrayList<Pedidos> listaPedidos = new ArrayList<Pedidos>();
-	
 	private int indice = 0;
+
+	//Pedido - Produto
+	private Pedidos pedidoProduto = null;
+	
+	//Produto - Estoque
+	private ArrayList<Estoque> listaEstoque = new ArrayList<Estoque>();
 	
 	private Scanner scan = Natura.scan;
 	
+	//Gets
 	public int getPaginaProd(){
 		return paginaProd;
 	}
@@ -37,10 +42,17 @@ public class Produtos{
 		return indice;
 	}
 	
-	public List<Pedidos> getListaPedidos() {
-		return listaPedidos;
+	//Get Pedidos - Produtos
+	public Pedidos getpedidoProduto() {
+		return pedidoProduto;
 	}
 	
+	//Get Produto - Estoque
+	public List<Estoque> getListaEstoque() {
+		return listaEstoque;
+	}
+	
+	//Sets
 	public void setPaginaProd(int paginaProd){
 		this.paginaProd = paginaProd;
 	}
@@ -61,18 +73,25 @@ public class Produtos{
 		this.indice = indice;
 	}
 	
-	public void setListaPedidos(ArrayList<Pedidos> listaPedidos) {
-		this.listaPedidos = listaPedidos;
+	//Set Pedido - Produto
+	public void setPedidoProduto(Pedidos pedidoProduto) {
+		this.pedidoProduto = pedidoProduto;
 	}
 	
-	public Produtos(int paginaProd, long codigoProd, String descricaoProd, Double precoProd){
+	//Set Produto - Estoque
+	public void setListaEstoque(ArrayList<Estoque> listaEstoque) {
+		this.listaEstoque = listaEstoque;
+	}
+	
+	public Produtos(int paginaProd, long codigoProd, String descricaoProd, Double precoProd, Pedidos pedido){
 		this.paginaProd = paginaProd;
 		this.codigoProd = codigoProd;
 		this.descricaoProd = descricaoProd;
 		this.precoProd = precoProd;
+		this.pedidoProduto = pedido;
 	}
 	
-	public Produtos(){
+	public Produtos(Pedidos pedido){
 		try{
 			System.out.println("Página do Produto: ");
 			this.paginaProd = scan.nextInt();
@@ -86,6 +105,7 @@ public class Produtos{
 			System.out.println("Código do Produto: ");
 			this.codigoProd = scan.nextLong();
 			scan.nextLine();
+			pedidoProduto = pedido;
 		}catch(InputMismatchException e){
 			System.out.println("Erro! Digite somente números!");
 			scan.nextLine();			
@@ -147,6 +167,7 @@ public class Produtos{
 	}
 	
 	public void mostraProduto(){
+		System.out.println("Produto:");
 		System.out.println("Página: " + this.paginaProd);
 		System.out.println("Código: " + this.codigoProd);
 		System.out.println("Descrição: " + this.descricaoProd);

@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 public class Natura{
 	
-	public static ArrayList<Cliente> listaClientes = new ArrayList<Cliente>();
+	public static ArrayList<Clientes> listaClientes = new ArrayList<Clientes>();
 	public static ArrayList<Pedidos> listaPedidos = new ArrayList<Pedidos>();
 	public static ArrayList<Produtos> listaProdutos = new ArrayList<Produtos>();
 	public static ArrayList<Estoque> listaEstoque = new ArrayList<Estoque>();
@@ -43,7 +43,7 @@ public class Natura{
 						cadastroClientes();
 						break;
 					case 1:
-						Cliente cli = consultaClientes();
+						Clientes cli = consultaClientes();
 						if(cli != null && cli.getTelefoneCliente() != 0){
 							System.out.println("--------------------------------");
 							System.out.println("Cliente encontrado!");
@@ -116,7 +116,7 @@ public class Natura{
 				do{
 					switch(opProdutos){
 					case 0:
-						cadastroProdutos();
+						cadastroProdutos(consultaPedidos());
 						break;
 					case 1:
 						Produtos prod = consultaProdutos();
@@ -153,7 +153,7 @@ public class Natura{
 				do{
 					switch(opEstoque){
 					case 0:
-						registroEstoque();
+						registroEstoque(consultaProdutos());
 						break;
 					case 1:
 						Estoque est = consultaEstoque();
@@ -190,11 +190,11 @@ public class Natura{
 				do{
 					switch(opVendas){
 					case 0:
-						registroVendas();
+						registroVendas(consultaClientes());
 						break;
 					case 1:
 						Vendas vend = consultaVendas();
-						if(vend != null && vend.getNumNotaFisc() != 0){
+						if(vend != null && vend.getCodVenda() != 0){
 							System.out.println("--------------------------------");
 							System.out.println("Venda encontrada!");
 							System.out.println("--------------------------------");
@@ -234,13 +234,13 @@ public class Natura{
 	}
 	
 		public static void cadastroClientes(){
-			Cliente cliente = new Cliente();
-			if(cliente != null && cliente.getTelefoneCliente() != 0){
-				cliente.save();
+			Clientes clientes = new Clientes();
+			if(clientes != null && clientes.getTelefoneCliente() != 0){
+				clientes.save();
 				System.out.println("---------------------------------");
 				System.out.println("Cliente cadastrado com sucesso!");
 				System.out.println("---------------------------------");
-				cliente.mostraCliente();
+				clientes.mostraCliente();
 				System.out.println("---------------------------------");
 			}else{
 				System.out.println("---------------------------------");
@@ -249,9 +249,9 @@ public class Natura{
 			}
 		}
 		
-		public static void registroPedidos(Cliente cli, Produtos prod){
+		public static void registroPedidos(Clientes cli, Produtos prod){
 			Pedidos pedidos = new Pedidos(cli, prod);
-			if(cli != null && pedidos.getCodigoPedido() != 0 && prod != null){
+			if(cli != null && pedidos.getCodigoPedido() != 0 && prod.getCodigoProd() != 0){
 				pedidos.save();
 				System.out.println("---------------------------------");
 				System.out.println("Pedido registrado com sucesso!");
@@ -265,8 +265,8 @@ public class Natura{
 			}
 		}
 		
-		public static void cadastroProdutos(){
-			Produtos produtos = new Produtos();
+		public static void cadastroProdutos(Pedidos pedido){
+			Produtos produtos = new Produtos(pedido);
 			if(produtos != null && produtos.getCodigoProd() != 0){
 				produtos.save();
 				System.out.println("---------------------------------");
@@ -281,8 +281,8 @@ public class Natura{
 			}
 		}
 		
-		public static void registroEstoque(){
-			Estoque estoque = new Estoque();
+		public static void registroEstoque(Produtos produto){
+			Estoque estoque = new Estoque(produto);
 			if(estoque != null && estoque.getCodigoProd() != 0){
 				estoque.save();
 				System.out.println("---------------------------------");
@@ -297,9 +297,9 @@ public class Natura{
 			}
 		}
 		
-		public static void registroVendas(){
-			Vendas vendas = new Vendas();
-			if(vendas != null && vendas.getNumNotaFisc() != 0){
+		public static void registroVendas(Clientes cli){
+			Vendas vendas = new Vendas(cli);
+			if(vendas != null && vendas.getCodVenda() != 0){
 				vendas.save();
 				System.out.println("---------------------------------");
 				System.out.println("Venda registrada com sucesso!");
@@ -313,12 +313,12 @@ public class Natura{
 			}
 		}
 		
-		public static Cliente consultaClientes(){
+		public static Clientes consultaClientes(){
 			long pesquisa = 0;
     		System.out.println("Telefone do Cliente: ");
         	pesquisa = scan.nextLong();
         	scan.nextLine();
-        	for (Cliente cli : listaClientes) {
+        	for (Clientes cli : listaClientes) {
         		if (cli.getTelefoneCliente() == pesquisa){               
         			cli.setIndice(listaClientes.indexOf(cli));  
         			return cli;
@@ -375,7 +375,7 @@ public class Natura{
         	pesquisa = scan.nextLong();
         	scan.nextLine();
         	for (Vendas vend : listaVendas) {
-        		if (vend.getNumNotaFisc() == pesquisa){               
+        		if (vend.getCodVenda() == pesquisa){               
         			vend.setIndice(listaVendas.indexOf(vend));  
         			return vend;
         		}
@@ -387,10 +387,10 @@ public class Natura{
     		System.out.println("Dados dos Clientes:");
     		System.out.println("---------------------------------");
     		int pos = 0;
-    		for (Cliente cliente : listaClientes){
+    		for (Clientes clientes : listaClientes){
     			pos += 1;
     			System.out.println("Número: " + pos);
-    			cliente.mostraCliente();
+    			clientes.mostraCliente();
     			System.out.println("---------------------------------");    		
     		}
     	}
